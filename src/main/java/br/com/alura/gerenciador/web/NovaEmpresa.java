@@ -16,10 +16,10 @@ import br.com.alura.gerenciador.model.Empresa;
 /**
  * Servlet implementation class NovaEmpresa
  */
-@WebServlet("/NovaEmpresa")
-public class NovaEmpresa extends HttpServlet {
+
+public class NovaEmpresa  implements Tarefa {
 	private static final long serialVersionUID = 1L;
-       
+	private String pagina = "/WEB-INF/paginas/novaEmpresa.jsp";
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -36,6 +36,16 @@ public class NovaEmpresa extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/paginas/novaEmpresa.jsp");
 		dispatcher.forward(request, response);
 		
+	}
+
+	@Override
+	public String executa(HttpServletRequest request, HttpServletResponse response) {
+		
+		String nome = request.getParameter("nome");
+		Empresa empresa = new Empresa(nome);
+		new EmpresaDAO().adiciona(empresa);
+		request.setAttribute("nome", nome);
+		return pagina;
 	}
 
 	

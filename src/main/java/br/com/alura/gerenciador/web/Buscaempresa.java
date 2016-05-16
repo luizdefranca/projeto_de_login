@@ -14,11 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.alura.gerenciador.dao.EmpresaDAO;
 import br.com.alura.gerenciador.model.Empresa;
 
-@SuppressWarnings("serial")
-@WebServlet(asyncSupported = true, urlPatterns = { "/busca" })
-public class Buscaempresa extends HttpServlet {
 
-	@Override
+public class Buscaempresa implements Tarefa{
+	private String pagina = "/WEB-INF/paginas/empresas.jsp";
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
@@ -29,6 +28,15 @@ public class Buscaempresa extends HttpServlet {
 		dispatcher.forward(request, response); 
 		
 		
+	}
+
+	@Override
+	public String executa(HttpServletRequest request, HttpServletResponse response) {
+		
+		String filtro = request.getParameter("filtro");
+		Collection<Empresa> empresas = new EmpresaDAO().buscaPorSimilaridade(filtro); 
+		request.setAttribute("empresas", empresas);
+		return pagina;
 	}
 	
 	

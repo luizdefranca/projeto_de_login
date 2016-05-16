@@ -5,7 +5,7 @@
 <html>
 <body>
 Bem vindo ao nosso gerenciador de empresas!<br/>
-<form action="NovaEmpresa" method="POST">
+<form action="FazTudo?tarefa=NovaEmpresa" method="POST">
 	Nome:<input type="text" name="nome">
 	<button type="submit">Nova Empresa</button>
 </form>
