@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import br.com.alura.gerenciador.Empresa;
+import br.com.alura.gerenciador.model.Empresa;
 
 public class EmpresaDAO {
 

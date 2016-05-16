@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import br.com.alura.gerenciador.Usuario;
+import br.com.alura.gerenciador.model.Usuario;
 
 /**
  * Servlet Filter implementation class ManageFilter

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.alura.gerenciador.Usuario;
+import br.com.alura.gerenciador.model.Usuario;
 
 /**
  * Servlet implementation class Logout
