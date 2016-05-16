@@ -14,7 +14,7 @@ Bem vindo ao nosso gerenciador de empresas!<br/>
 	Senha: <input type="password" name="senha"> </br>
 	<button type="submit">Enviar</button>
 </form>
-<form action="logout" method="POST">
+<form action="FazTudo?tarefa=Logout" method="POST">
 	<button type="submit">Logout</button>
 	
 </form>

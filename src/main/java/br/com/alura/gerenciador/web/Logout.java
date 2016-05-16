@@ -17,8 +17,8 @@ import br.com.alura.gerenciador.model.Usuario;
 /**
  * Servlet implementation class Logout
  */
-@WebServlet("/logout")
-public class Logout extends HttpServlet {
+
+public class Logout implements Tarefa {
 	private static final long serialVersionUID = 1L;
        
     
@@ -26,13 +26,39 @@ public class Logout extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		Usuario usuario = Login.USUARIOS_LOGADOS.get(request.getSession().getAttribute("usuario.logado"));
+//		String emailUsuario = "<deslogado>";
+//		if (usuario != null) usuario.getEmail();
+//		
+//		request.getSession().removeAttribute("usuarioLogado");  //	SÃO POSSÍVEIS AS DUAS OPCOES PARA
+//	//  request.getSession().invalidate();						// TERMINAR UMA SESSAO DE UM USUARIO
+//																// A PRIMEIRA GUARDA ALGUMAS INFORMAÇOES
+//																//A SEGUNDA APAGA TODAS
+//		
+//		/*Cookie cookie = new Cookies(request.getCookies()).buscaUsuarioLogado();
+//		Usuario usuario = Login.USUARIOS_LOGADOS.get(cookie.getValue());
+//		PrintWriter writer = response.getWriter();
+//		if(cookie == null) 	writer.println("<html><body>Usuario não estava logado</body></html>");
+//		else{
+//			cookie.setMaxAge(0);
+//			response.addCookie(cookie);
+//			writer.println("<html><body>Deslogado com sucesso</body></html>");
+//		}*/
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/paginas/logout.html");
+//	    dispatcher.forward(request, response);
+//	}
+
+
+
+	@Override
+	public String executa(HttpServletRequest request, HttpServletResponse response) {
 		Usuario usuario = Login.USUARIOS_LOGADOS.get(request.getSession().getAttribute("usuario.logado"));
 		String emailUsuario = "<deslogado>";
 		if (usuario != null) usuario.getEmail();
 		
-		request.getSession().removeAttribute("usuarioLogado");  //	SÃO POSSÍVEIS AS DUAS OPCOES PARA
-	//  request.getSession().invalidate();						// TERMINAR UMA SESSAO DE UM USUARIO
+	//	request.getSession().removeAttribute("usuarioLogado");  //	SÃO POSSÍVEIS AS DUAS OPCOES PARA
+	  request.getSession().invalidate();						// TERMINAR UMA SESSAO DE UM USUARIO
 																// A PRIMEIRA GUARDA ALGUMAS INFORMAÇOES
 																//A SEGUNDA APAGA TODAS
 		
@@ -45,8 +71,8 @@ public class Logout extends HttpServlet {
 			response.addCookie(cookie);
 			writer.println("<html><body>Deslogado com sucesso</body></html>");
 		}*/
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/paginas/logout.html");
-	    dispatcher.forward(request, response);
+		String pagina = "/WEB-INF/paginas/logout.html";
+		return pagina;
 	}
 
 }
